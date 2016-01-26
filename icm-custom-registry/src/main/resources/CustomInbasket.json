@@ -1,0 +1,248 @@
+{
+    "id":"CustomInbasket",
+    "title":"Custom In-baskets",
+    "category":"CustomWidgets",
+    "description":"Custom in-baskets use F_Subject and B615_flo as the examples to custom the column decorator. Please modify CustomInbasket.js and use the correct symbolic names",
+    "definition":"CustomInbasket.json",
+    "preview":"images/inbasket_preview.gif",
+    "icon":"images/inbasket_icon.png",
+    "runtimeClassName":"icm.custom.pgwidget.custominbasket.CustomInbasket",
+    "help": "acmwrh23.htm",
+    "previewThumbnail":"images/inbasket_thumb.gif",
+    "properties":[        
+        {
+            "propertyType":"property",
+            "type":"string",
+            "id":"PreferredWidth",
+            "defaultValue":"500px",
+            "disabled":true,
+            "required":false,
+            "visibility":false,
+            "title":"Preferred Width"
+        },
+        {
+            "propertyType":"property",
+            "type":"string",
+            "id":"PreferredHeight",
+            "defaultValue":"100%",
+            "disabled":true,
+            "required":false,
+            "visibility":false,
+            "title":"Preferred Height"
+        },
+        {
+            "propertyType":"property",
+            "type":"label",
+            "id":"settingLabel",
+            "title":"Specify the role for the in-basket and the work items that are to be included in the in-basket.",            
+            "help": "acmwrh20.htm"
+        },
+        {
+            "propertyType":"property",
+            "type":"role",
+            "id":"roleName",
+            "defaultValue":"",
+            "required":false,
+            "visibility":true,
+            "title":"Role"
+        },
+		{
+            "propertyType":"property",
+            "type":"choicelist",
+            "id":"showLockWorkItem",
+            "defaultValue":"showWorkItemLockedByAnyUser",
+            "required":true,
+            "visibility":true,
+            "title":"Select the locked items to be displayed",
+            "options": [
+                        { "id": "showWorkItemLockedByAnyUser", "title": "Work items locked by any user" },
+                        { "id": "showWorkItemLockedByLogOnUser", "title": "Only work items locked by current user" }
+                    ]
+        },
+		{
+            "propertyType":"property",
+            "type":"boolean",
+            "id":"allowUserConfigureShowLockedWorkItem",
+            "defaultValue":true,
+            "required":false,
+            "visibility":true,
+            "title":"Allow user to show or hide work items locked by other users"
+        },
+		{
+            "propertyType":"property",
+            "type":"boolean",
+            "id":"showAllCounts",
+            "defaultValue":false,
+            "required":false,
+            "visibility":true,
+            "title":"Show work item counts for all in-baskets"
+        },
+		{
+            "propertyType":"property",
+            "type":"boolean",
+            "id":"hideFilter",
+            "defaultValue":false,
+            "required":false,
+            "visibility":true,
+            "title":"Hide in-basket filter"
+        },
+		{
+            "propertyType":"property",
+            "type":"boolean",
+            "id":"waitEventToRender",
+            "defaultValue":false,
+            "required":false,
+            "visibility":true,
+            "title":"Do not populate the in-basket until the dynamic filter is received"
+        },
+        {
+            "propertyType":"group",
+            "type":"tab",
+            "id":"InbasketMenuTab",
+            "title":"Menu",
+            "propertyMembers":[
+                {
+                    "propertyType":"property",
+                    "type":"contextualMenu",
+                    "context":[ "WorkItem", "Solution", "WorkItemReference", "Role" ],
+                    "id":"inbasketContextualMenu",
+                    "defaultValue":{
+                        "actionList":[
+                            {
+                                "actionDefinitionId":"icm.action.workitem.OpenWorkItemPage",
+                                "propertiesValue":{
+                                    "label":"OpenItem"
+                                }
+                                
+                            },
+                            {
+                                "actionDefinitionId":"icm.action.workitem.MoveToInbox",
+                                "propertiesValue":{
+                                    "label":"MoveItemToPersonalIn"
+                                }
+                                
+                            },
+                            {
+                                "actionDefinitionId":"icm.action.workitem.ReturnToSender",
+                                "propertiesValue":{
+                                    "label":"ReturnItem"
+                                }
+                                
+                            },
+                            {
+                                "actionDefinitionId":"icm.action.workitem.Reassign",
+                                "propertiesValue":{
+                                    "label":"ReassignItem"
+                                }
+                                
+                            },
+                            {
+                                "actionDefinitionId":"icm.action.comment.AddWorkItemComment",
+                                "propertiesValue":{
+                                    "label":"AddCommentToWorkItem"
+                                }
+                                
+                            }
+                            
+                        ]
+                        
+                    },
+                    "title":"Menu for the In-baskets widget"
+                }
+            ]
+        },
+		{
+            "propertyType":"group",
+            "type":"tab",
+            "id":"InbasketToolbarTab",
+            "title":"Toolbar",
+            "propertyMembers":[
+                {
+                    "propertyType":"property",
+                    "type":"toolbar",
+                    "context":[ "WorkItem", "Solution", "WorkItemReference", "Role" ],
+                    "id":"InbasketToolbar",
+                    "title":"Toolbar for the In-basket widget",
+					"required": false,
+					"visibility": true,					
+					"defaultValue": {
+						"actionList": [
+						]
+					}
+				}
+			]
+		}
+    ],
+    "events":[
+        {
+            "id":"icm.ReceiveRole",
+            "title":"Receive Role",
+            "functionName":"handleReceiveRole",
+            "direction":"subscribed",
+            "description":"Update the In-baskets widget to display the in-baskets that are associated with the specified role."
+        },
+        {
+            "id":"icm.ApplyFilter",
+            "title":"Apply filter",
+            "functionName":"handleApplyFilter",
+            "direction":"subscribed",
+            "description":"Update the work items that are listed in the in-basket based on the specified filters."
+        },
+        {
+            "id":"icm.SelectWorkItem",
+            "title":"Work item selected",
+            "direction":"published",
+            "type":"wiring",
+            "description":"The user clicked a row or pressed enter in the in-basket to select the work item."
+        },
+        {
+            "id":"icm.Refresh",
+            "title":"Refresh",
+            "functionName":"handleRefresh",
+            "direction":"subscribed",
+            "description":"Refresh the in-basket to update the list of work items."
+        },
+        {
+            "id":"icm.SelectInBasket",
+            "title":"In-basket selected",
+            "direction":"published",
+            "type":"wiring",
+            "description":"The user opened the page that contains the In-baskets widget or has clicked a tab to display a different in-basket."
+        },
+        {
+            "id":"icm.RequestSelectWorkItems",
+            "title":"Request selected work items",
+            "functionName":"handleRequestSelectWorkItems",
+            "direction":"subscribed",
+            "description":"Send the information for the in-basket work items that are specified in the event payload."
+        },
+        {
+            "id":"icm.SendSelectWorkItems",
+            "title":"Send selected work items",
+            "direction":"published",
+            "type":"wiring",
+            "description":"Another widget requested information for the in-basket work items that are specified in the event payload."
+        },
+        {
+            "id":"icm.OpenWorkItem",
+            "title":"Open work detail page",
+            "direction":"published",
+            "type":"broadcast",
+            "description":"The user selected a work item to open."
+        },
+        {
+            "id":"icm.ClearContent",
+            "title":"Clear content",
+            "functionName":"handleClearContent",
+            "direction":"subscribed",
+            "description":"Clear the content in the In-baskets widget."
+        },
+	{
+	    "id":"icm.ReceiveInbasket",
+            "title":"Receive In-basket",
+            "functionName":"handleReceiveInbasket",
+            "direction":"subscribed",
+            "description":"Display the tab for the in-basket that is contained in the event payload."
+	}
+    ]
+}

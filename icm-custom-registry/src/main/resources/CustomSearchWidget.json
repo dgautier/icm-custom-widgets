@@ -1,0 +1,43 @@
+{
+	"id":"CustomSearchWidget",
+	"title":"Simple Custom Search Widget",
+	"category":"CustomWidgets",
+	"description":"This widget show payload from Search widget",
+	"definition":"CustomSearchWidget.json",
+    "preview": "images/caseinfo_preview.png",
+    "icon": "images/caseinfo_icon.png",
+	"runtimeClassName":"icm.custom.pgwidget.customSearchWidget.CustomSearchWidget",
+	"help": "acmwrh126.htm",
+	"previewThumbnail":"images/caseinfo_thumb.gif",
+	"properties":[
+		{
+            "propertyType":"property",
+            "type":"string",
+            "id":"PreferredHeight",
+            "defaultValue":"100%",
+            "disabled": true,
+            "required":false,
+            "visibility":false,
+            "title":"Preferred Height"
+        },
+		{
+			"propertyType":"property",
+			"type":"string",
+			"id":"customProperty1",
+			"defaultValue":"http://",
+			"required":false,
+			"visibility":true,
+			"style": "width:95%;",
+			"title":"Custom property 1"
+		}
+	],
+	"events":[
+		{
+			"id":"icm.SearchCases",
+			"title":"Custom Search Event 1252",
+			"functionName":"handleICM_SearchCasesEvent",
+			"direction":"broadcast",
+			"description":"Custom Event 1"
+		}
+	]
+}

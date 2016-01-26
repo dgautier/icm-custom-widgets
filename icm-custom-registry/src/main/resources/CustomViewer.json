@@ -1,0 +1,47 @@
+{
+    "id":"CustomViewer",
+    "title":"Custom Viewer",
+    "category":"CustomWidgets",
+    "description":"This widget demonstrates how to embed Viewer widget into page widget or a dialog",
+    "definition":"CustomViewer.json",
+    "preview":"images/custom_viewer_preview.gif",
+    "icon":"images/custom_viewer_icon.png",
+    "runtimeClassName":"icm.custom.pgwidget.customWidget.CustomViewer",
+	"help": "acmwrh76.htm",
+    "previewThumbnail":"images/custom_viewer_thumb.gif",
+    "properties":[
+		{
+            "propertyType":"property",
+            "type":"string",
+            "id":"PreferredHeight",
+            "defaultValue":"500px",
+            "disabled": true,
+            "required":false,
+            "visibility":false,
+            "title":"Preferred Height"
+        }
+    ],
+    "events":[
+        {
+            "id":"icm.OpenDocument",
+            "title":"Open Document",
+            "functionName":"handleICM_OpenDocumentEvent",
+            "direction":"subscribed",
+            "description":"Open Document Event"
+        },
+		{
+            "id":"icm.ClearContent",
+            "title":"Clear Content",
+            "functionName":"handleICM_ClearContentEvent",
+            "direction":"subscribed",
+            "description":"Clear Content Event"
+        },
+		{
+            "id":"icm.PageClosing",
+            "title":"Page Closing",
+            "functionName":"handleICM_PageClosingEvent",
+            "direction":"subscribed",
+            "description":"Clean up Objects"
+        }
+    ]
+}

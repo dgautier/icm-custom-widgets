@@ -1,0 +1,84 @@
+<div style="width: 100%; height: 100%;">
+	<div data-dojo-attach-point="descriptionNode" style="display:none" class="ecmwdgtIWidgetDescription">${resourceBundle.widgetDescription}</div>
+	<div data-dojo-attach-point="contentNode" style="height: 100%; overflow:auto;">
+		<div data-dojo-attach-point="scriptAdapterView">
+		  <table width="100%" role="presentation" aria-live="true">
+		    <tbody>
+		      <tr>
+		      	<td width="50%" >
+		      	 <table summary="RECEIVED_EVENT_TEXT"><tbody>
+		      	   <tr>
+		      	     <th scope="col" style="text-align:justify" tabindex="0"><span>Receive event:</span></th>
+		      	   </tr>
+		           <tr>
+		             <td>
+		               <div data-dojo-attach-point="scriptEventNotReceived" style="display:block">
+		       			  No event detected.
+		           	   </div>
+		           	   <div data-dojo-attach-point="scriptEventReceived" style="display:none">
+		           		<table>
+		           		  <tbody>
+		       				<tr><th scope="row" style="font-weight:bold; text-align:justify"><span>Event name:</span></th><td data-dojo-attach-point="sourceEventName"></td></tr>
+		       				<tr><th scope="row" style="font-weight:bold; text-align:justify"><span>Event type</span></th><td data-dojo-attach-point="sourceEventType"></td></tr>
+		       				<tr><th scope="row" style="font-weight:bold; text-align:justify"><span>Event payload</span></th><td/></tr>
+		       			  </tbody>
+		       			</table>
+		       				
+	       				<table>
+	           		  	<tbody data-dojo-attach-point="sourceEventPayload">
+	       				</tbody>
+	       				</table>
+		       				
+		           	  </div>
+		            </td>
+		          </tr>
+		          </tbody>
+		          </table>
+		        </td>
+		        <td class="divider"></td>
+		      	<td width="50%" >
+		      	 <table summary="${resourceBundle.SENT_EVENT_TEXT}" ><tbody>
+		          <tr>
+		            <th scope="col" style="text-align:justify" tabindex="0"><span>Send event:</span></th>
+		          </tr>
+		          <tr>
+		            <td>
+		           	  <div data-dojo-attach-point="scriptEventSent" style="display:none">
+		           		<table>
+		           		  <tbody>
+		       				<tr><th scope="row" style="font-weight:bold; text-align:justify"><span>Event name</span></th><td data-dojo-attach-point="targetEventName"></td></tr>
+		       				<tr><th scope="row" style="font-weight:bold; text-align:justify"><span>Event type</span></th><td data-dojo-attach-point="targetEventType"></td></tr>
+		       				<tr><th scope="row" style="font-weight:bold; text-align:justify"><span>Event payload</span></th><td/></tr>
+		       			  </tbody>
+		       		    </table>
+		       		    <table>
+		           		  	<tbody data-dojo-attach-point="targetEventPayload">
+		       				</tbody>
+		       			</table>
+		           	  </div>
+		             </td>
+		           </tr>
+		         </tbody></table>
+		    </tbody>
+		  </table>
+		  <div data-dojo-attach-point="javascriptSection">
+		  	<table width="100%" role="presentation">
+		    	<tbody>
+		      	<tr>
+		      		<th scope="col" style="text-align:justify" tabindex="0"><span>Javascript:</span></th>
+		      	</tr>
+		    	</tbody>
+		  	</table>
+		  	<table width="100%" style="padding-top:5px" role="presentation">
+		    	<tbody>
+		      	<tr>
+		      		<td>
+						<textarea rows="10" cols="50" data-dojo-attach-point="scriptPaneView"></textarea>
+		      		</td>
+		      	</tr>
+		     	</tbody>
+		    </table>
+		  </div>
+	 </div>
+</div>
+</div>

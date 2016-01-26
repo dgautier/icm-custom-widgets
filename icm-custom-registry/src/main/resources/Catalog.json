@@ -1,0 +1,111 @@
+{
+    "Name":"IBM Case Manager custom widget package",
+    "Description":"IBM Case Manager custom widget package",
+    "Locale":"",
+    "Version":"5.2",
+    "Categories":[
+        {
+            "id":"CustomWidgets",
+            "title":"Custom Widgets"
+        }
+    ],
+    "Widgets":[
+		{
+		    "id": "CustomCaseInfo",
+		    "title": "Custom Case Information",
+		    "category": "CustomWidgets",
+		    "description": "Displays and updates the attachment list for a single work item and displays attachment content in the Viewer widget that is on the same page.",
+		    "definition": "CustomCaseInfo.json",
+		    "preview": "images/caseinfo_preview.png",
+		    "icon": "images/caseinfo_icon.png",
+		    "runtimeClassName": "icm.custom.pgwidget.customcaseinfo.CustomCaseInfo",
+		    "help": "acmwrh94.htm",
+		    "previewThumbnail": "images/caseinfo_thumb.gif"
+		},
+		{
+	       "id":"CustomPageWidget",
+	       "title":"Simple Custom Page Widget",
+	       "category":"CustomWidgets",
+	       "description":"This widget show payload from Search widget",
+	       "definition":"CustomPageWidget.json",
+           "preview": "images/caseinfo_preview.png",
+           "icon": "images/caseinfo_icon.png",
+	       "runtimeClassName":"icm.custom.pgwidget.customWidget.CustomPageWidget",
+	       "help": "acmwrh126.htm",
+	       "previewThumbnail":"images/caseinfo_thumb.gif"
+		},
+		{
+		    "id":"CustomViewer",
+		    "title":"Custom Viewer",
+		    "category":"CustomWidgets",
+		    "description":"This widget demonstrates how to embed Viewer widget into page widget or a dialog",
+		    "definition":"CustomViewer.json",
+		    "preview":"images/custom_viewer_preview.gif",
+		    "icon":"images/custom_viewer_icon.png",
+		    "runtimeClassName":"icm.custom.pgwidget.customviewer.CustomViewer",
+			"help": "acmwrh76.htm",
+		    "previewThumbnail":"images/custom_viewer_thumb.gif"
+		},
+		{
+	       "id":"CommentWidget",
+	       "title":"Comment Page Widget",
+	       "category":"CustomWidgets",
+	       "description":"This widget show comments for a case",
+	       "definition":"CommentWidget.json",
+           "preview": "images/comment_preview.png",
+           "icon": "images/comment_icon.png",
+	       "runtimeClassName":"icm.custom.pgwidget.commentWidget.CommentWidget",
+	       "help": "acmwrh126.htm",
+	       "previewThumbnail":"images/comment_thumb.gif"
+		},
+		{
+		    "id": "CustomCaseList",
+		    "title": "Custom Case List",
+		    "category": "CustomWidgets",
+		    "description": "Displays a list of the cases for the displayed solution. The list is the result of search criteria passed by an event from the Search widget or a custom widget.",
+		    "definition": "CustomCaseList.json",
+		    "preview": "images/custom_caselist_preview.png",
+		    "icon": "images/custom_caselist_icon.png",
+		    "runtimeClassName": "icm.custom.pgwidget.customcaselist.CustomCaseList",
+		    "help": "acmwrh97.htm",
+		    "previewThumbnail": "images/custom_caselist_thumb.gif"
+		},
+		{
+		   "id":"CustomInbasket",
+		    "title":"Custom Inbasket",
+		    "category":"CustomWidgets",
+		    "description":"Custom in-baskets use F_Subject and B615_flo as the examples to custom the column decorator. Please modify CustomInbasket.js and use the correct symbolic names",
+		    "definition":"CustomInbasket.json",
+			"preview": "images/comment_preview.png",
+			"icon": "images/comment_icon.png",
+		    "runtimeClassName":"icm.custom.pgwidget.custominbasket.CustomInbasket",
+		    "help": "acmwrh126.htm",
+		    "previewThumbnail":"images/comment_thumb.gif"
+		},
+		{
+		   "id":"CustomScriptAdapter",
+		    "title":"Custom Script Adapter",
+		    "category":"CustomWidgets",
+		    "description":"Custom Script Adapter. Please modify CustomScriptAdapter.js and use the correct symbolic names",
+		    "definition":"CustomScriptAdapter.json",
+
+		    "preview":"images/customscriptadapter_preview.gif",
+		    "icon":"images/customscriptadapter_icon.png",
+		    "runtimeClassName":"icm.custom.pgwidget.customScriptAdapter.CustomScriptAdapter",    
+		    "help": "acmwrh120.htm",
+		    "previewThumbnail":"images/customscriptadapter_thumb.gif"
+		},
+		{
+	       "id":"CustomSearchWidget",
+	       "title":"Simple Custom Search Widget",
+	       "category":"CustomWidgets",
+	       "description":"This widget show payload from Search widget",
+	       "definition":"CustomSearchWidget.json",
+           "preview": "images/caseinfo_preview.png",
+           "icon": "images/caseinfo_icon.png",
+	       "runtimeClassName":"icm.custom.pgwidget.customSearchWidget.CustomSearchWidget",
+	       "help": "acmwrh126.htm",
+	       "previewThumbnail":"images/caseinfo_thumb.gif"
+		}
+	]
+}

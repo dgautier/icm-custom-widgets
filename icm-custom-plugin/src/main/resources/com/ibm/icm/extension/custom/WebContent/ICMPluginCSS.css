@@ -1,0 +1,15 @@
+
+.casesIcon {
+	width: 32px;
+	height: 32px;
+	background-repeat: no-repeat;
+	background-image: url('images/casesIcon.png');
+}
+
+.casesIcon {
+	background-position: -32px 0;	
+}
+
+.ecmLaunchBarContainer .launchBarButton.dijitToggleButtonChecked .casesIcon {
+	background-position: 0 0;	
+}

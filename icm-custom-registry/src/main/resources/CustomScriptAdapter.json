@@ -1,0 +1,59 @@
+{
+    "id":"CustomScriptAdapter",
+    "title":"Custom Script Adapter",
+    "category":"CustomWidgets",
+    "description":"Custom Script Adapter. Please modify CustomScriptAdapter.js and use the correct symbolic names",
+    "definition":"CustomScriptAdapter.json",
+    "preview":"images/customscriptadapter_preview.gif",
+    "icon":"images/customscriptadapter_icon.png",
+    "runtimeClassName":"icm.custom.pgwidget.customScriptAdapter.CustomScriptAdapter",    
+	"help": "acmwrh120.htm",
+    "previewThumbnail":"images/customscriptadapter_thumb.gif",
+    "properties":[
+        {
+            "propertyType":"property",
+            "type":"scripts",
+            "id":"payload",
+            "defaultValue":"return payload;",
+            "required":false,
+            "visibility":true,
+            "title":"payload"
+        },
+	   {
+            "propertyType":"property",
+            "type":"boolean",
+            "id":"showScriptText",
+            "defaultValue":false,
+            "required":false,
+            "visibility":true,
+            "title":"Show Script Text"
+        },
+	  {
+            "propertyType":"property",
+            "type":"boolean",
+            "id":"blockOutboundEvent",
+            "defaultValue":false,
+            "required":false,
+            "visibility":true,
+            "title":"Block Outbound Event"
+        }
+
+    ],
+    "events":[
+        {
+            "id":"icm.ReceiveEvent",
+            "title":"Receive Event Payload",
+            "functionName":"handleICM_ReceiveEvent",
+            "direction":"subscribed",
+            "description":"Receive Event Payload description"
+        },
+	   {
+            "id":"icm.SendEventPayload",
+			"type":"wiring",
+            "title":"Send Event Payload",
+            "direction":"published",
+            "description":"Send Event Payload description"
+         }
+
+    ]
+}

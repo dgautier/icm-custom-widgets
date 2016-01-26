@@ -1,0 +1,121 @@
+{
+	"id":"CustomPageWidget",
+	"title":"Simple Custom Page Widget",
+	"category":"CustomWidgets",
+	"description":"This widget show widget properties and event name.",
+	"definition":"CustomPageWidget.json",
+    "preview": "images/caseinfo_preview.png",
+    "icon": "images/caseinfo_icon.png",
+	"runtimeClassName":"icm.custom.pgwidget.customWidget.CustomPageWidget",
+	"help": "acmwrh126.htm",
+	"previewThumbnail":"images/caseinfo_thumb.gif",
+	"properties":[
+		{
+            "propertyType":"property",
+            "type":"string",
+            "id":"PreferredHeight",
+            "defaultValue":"100%",
+            "disabled": true,
+            "required":false,
+            "visibility":false,
+            "title":"Preferred Height"
+        },
+		{
+			"propertyType":"property",
+			"type":"string",
+			"id":"customProperty1",
+			"remapNeeded":true,
+			"defaultValue":"http://",
+			"required":false,
+			"visibility":true,
+			"style": "width:95%;",
+			"title":"String property"
+		},
+		{
+            "propertyType":"property",
+            "type":"integer",
+            "id":"customProperty2",
+            "remapNeeded":true,
+            "defaultValue":20,
+            "required":true,
+            "visibility":true,
+            "title":"Integer Property",
+            "description":"Integer property"
+        },
+        {
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "customProperty3",
+            "remapNeeded":true,
+            "defaultValue": false,
+            "required": false,
+            "visibility": true,
+            "title": "Boolean property"
+        },  
+        {
+            "propoertyType":"group",
+            "type":"tab",
+            "id":"Menu",
+            "title":"menu",
+            "propertyMembers":[
+                {
+                    "propertyType":"property",
+                    "type":"contextualMenu",
+                    "id":"customContextualMenu",
+                    "context": ["CustomContext"], 
+                    "defaultValue":{
+                        "actionList": [
+                            {
+				                "actionDefinitionId": "icm.action.utility.OpenWebPage",
+				                "propertiesValue": {
+				                    "label": "IBMWebPage",
+				                    "targetURL": "http://www.ibm.com"
+				                }
+                            }
+                        ]
+                    },
+                    "required":false,
+                    "visibility":true,
+                    "title": "custom Menu"
+                }
+            ]
+        },
+        {
+            "propoertyType":"group",
+            "type":"tab",
+            "id":"Toolbars",
+            "title":"toolbar",
+            "propertyMembers":[
+                {
+                    "propertyType":"property",
+                    "type":"toolbar",
+                    "id":"customToolbar",
+                    "context": ["CustomContext"], 
+                    "defaultValue":{
+                        "actionList": [
+                            {
+                                "actionDefinitionId": "icm.action.utility.OpenWebPage",
+                                "propertiesValue": {
+                                    "label": "IBMWebPage",
+                                    "targetURL": "http://www.ibm.com"
+                                }
+                            }
+                        ]
+                    },
+                    "required":false,
+                    "visibility":true,
+                    "title": "custom toolbar"
+                }
+            ]
+        }
+    ],
+	"events":[
+		{
+			"id":"icm.CustomEvent",
+			"title":"Custom Event 1",
+			"functionName":"handleICM_CustomEvent",
+			"direction":"subscribed",
+			"description":"Custom Event 1"
+		}
+	]
+}

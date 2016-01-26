@@ -1,0 +1,27 @@
+.ecmwdgtCaseCommentsContentPane .commentHistoryItemIcon {
+	padding: 5px;
+    vertical-align: top;
+}
+
+.ecmwdgtCaseCommentsContentPane .commentHistoryItemIconClass {
+    background-image: url("images/comment_20px_png24.png");
+    height: 20px;
+    width: 20px;
+}
+.ecmwdgtCaseCommentsContentPane .commentDate {
+    text-align: right;
+	vertical-align: top;
+	padding: 5px 5px 0;
+}
+
+.ecmwdgtCaseCommentsContentPane .commentCreator {
+    text-align: right;
+	vertical-align: top;
+	padding: 0 5px 5px;
+}
+
+.ecmwdgtCaseCommentsContentPane td{
+ 	border-color: #444444;
+    border-style: none none inset;
+    border-width: 1px;
+}

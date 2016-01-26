@@ -1,0 +1,529 @@
+{
+    "id": "CustomCaseInfo",
+    "title": "Custom Case Information",
+    "category": "CustomWidgets",
+    "description": "Displays information about a case in a tabbed format. You can configure the widget to hide or show the following tabs: Documents, History, Summary, and Tasks. You can add multiple Case Information widgets to a page, and each can contain different tabbed views.",
+    "definition": "CustomCaseInfo.json",
+    "preview": "images/caseinfo_preview.png",
+    "icon": "images/caseinfo_icon.png",
+    "runtimeClassName": "icm.custom.pgwidget.customcaseinfo.CustomCaseInfo",
+    "help": "acmwrh94.htm",
+    "previewThumbnail": "images/caseinfo_thumb.gif",
+    "properties": [
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "PreferredWidth",
+            "defaultValue": 320,
+            "disabled": true,
+            "required": false,
+            "visibility": false,
+            "title": "Preferred Width"
+        },
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "PreferredHeight",
+            "defaultValue": "100%",
+            "disabled": true,
+            "required": false,
+            "visibility": false,
+            "title": "Preferred Height"
+        },
+        {
+            "propertyType": "property",
+            "type": "label",
+            "id": "caseInfoShowCaseIdLabel",
+            "visibility": true,
+            "title": "Select the views to display in the Case Information widget. Each view displays as a separate tabbed page.",
+   			"help": "acmwrh95.htm"
+        },
+        {
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "caseInfoShowCaseId",
+            "defaultValue": true,
+            "required": true,
+            "visibility": true,
+            "title": "Display the case ID in the Case Information widget"
+        },
+        {
+            "propertyType": "property",
+            "type": "label",
+            "id": "lineSeparatorLabel1",
+            "visibility": true,
+            "title": ""
+        },
+        {
+            "propertyType": "property",
+            "type": "label",
+            "id": "lineSeparatorLabel2",
+            "visibility": true,
+            "title": ""
+        },
+        {
+            "propertyType": "property",
+            "type": "label",
+            "id": "availableViewsLabel",
+            "visibility": true,
+            "title": "Available Views:"
+        },
+        {
+            "propertyType": "property",
+            "type": "order",
+            "id": "tabDefinition",
+            "required": false,
+            "visibility": true,
+            "title": "Set tab visibility and set tab order",
+            "defaultValue":[
+            	{"id":"Summary","visibility":true},
+            	{"id":"Documents","visibility":true},
+            	{"id":"Activities","visibility":true},
+            	{"id":"History","visibility":true}
+            ],
+            "options":[
+                        { "id": "Summary", "title": "Summary" },
+                        { "id": "Documents", "title": "Documents" },
+                        { "id": "Activities", "title": "Tasks" },
+                        { "id": "History", "title": "History" }
+                    ]
+        },
+        {
+            "propertyType": "group",
+            "type": "section",
+            "id": "documentGeneralSettings",
+            "title": "Documents",
+            "propertyMembers": [
+                {
+                    "propertyType": "property",
+                    "type": "boolean",
+                    "id": "documentOpenInSeparateWindow",
+                    "defaultValue": true,
+                    "required": true,
+                    "visibility": true,
+                    "title": "Open documents in a separate browser window"
+                },
+                {
+                    "propertyType": "property",
+                    "type": "boolean",
+                    "id": "filterDocumentTypes",
+                    "defaultValue": false,
+                    "required": true,
+                    "visibility": true,
+                    "title": "Only show the document types that are defined in the solution"
+                }
+            ]
+        },
+        {
+            "propertyType": "group",
+            "type": "section",
+            "id": "commentsGeneralSettings",
+            "title": "Comments",
+            "propertyMembers": [
+                {
+                    "propertyType": "property",
+                    "type": "boolean",
+                    "id": "commentsAreReadOnly",
+                    "defaultValue": false,
+                    "required": true,
+                    "visibility": true,
+                    "title": "Comments are read only"
+                }
+            ]
+        },
+        {
+            "propertyType": "group",
+            "type": "tab",
+            "id": "documentContextualMenuSetting",
+            "title": "Menus",
+            "propertyMembers": [
+                {
+                    "propertyType": "group",
+                    "type": "dropdown",
+                    "id": "Menus",
+                    "title": "Menu for:",
+                    "propertyMembers": [
+                        {
+                            "propertyType": "property",
+                            "type": "contextualMenu",
+                            "id": "documentContextMenu",
+                            "context": [
+                                "Case", "Document"
+                            ],
+                            "required": false,
+                            "visibility": true,
+                            "title": "Documents view (Documents)",
+                            "defaultValue": {
+                                "actionList": [
+                                    {
+                                        "actionDefinitionId": "icm.action.contentitem.Open",
+                                        "propertiesValue": {
+                                            "label": "Open"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "icm.action.document.Preview",
+                                        "propertiesValue": {
+                                            "label": "Preview"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "CheckIn",
+                                        "propertiesValue": {
+                                            "label": "CheckIn"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "Unlock",
+                                        "propertiesValue": {
+                                            "label": "Cancel Check Out"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "CheckOutNoDownload",
+                                        "propertiesValue": {
+                                            "label": "Check Out"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "Download",
+                                        "propertiesValue": {
+                                            "label": "Download"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "DownloadAll",
+                                        "propertiesValue": {
+                                            "label": "Download All"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "RemoveFromFolder",
+                                        "propertiesValue": {
+                                            "label": "Remove from Case"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "ShowHyperlink",
+                                        "propertiesValue": {
+                                            "label": "Show Link"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "Edit",
+                                        "propertiesValue": {
+                                            "label": "Edit Properties"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "icm.action.comment.AddDocumentComment",
+                                        "propertiesValue": {
+                                            "label": "Add Comment"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "icm.action.contentitem.Cut",
+                                        "propertiesValue": {
+                                            "label": "Cut"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "propertyType": "property",
+                            "type": "contextualMenu",
+                            "id": "folderContextMenu",
+                            "context": [
+                                "Folder"
+                            ],
+                            "required": false,
+                            "visibility": true,
+                            "title": "Documents view (Folders)",
+                            "defaultValue": {
+                                "actionList": [
+                                    {
+                                        "actionDefinitionId": "icm.action.contentitem.Open",
+                                        "propertiesValue": {
+                                            "label": "Open"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "Edit",
+                                        "propertiesValue": {
+                                            "label": "Edit Properties"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "DeleteItem",
+                                        "propertiesValue": {
+                                            "label": "Delete"
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "icm.action.contentitem.Paste",
+                                        "propertiesValue": {
+                                            "label": "Paste"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "propertyType": "property",
+                            "type": "contextualMenu",
+                            "id": "taskContextMenu",
+                            "context": [
+                                "Task"
+                            ],
+                            "title": "Tasks view",
+                            "defaultValue": {
+                                "actionList": [
+                                    {
+                                        "actionDefinitionId": "icm.action.comment.AddTaskComment",
+                                        "propertiesValue": {
+                                            "label": "Add Comment to Task"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "propertyType": "property",
+                            "type": "contextualMenu",
+                            "id": "historyContextMenu",
+                            "context": [
+                                "Case"
+                            ],
+                            "title": "History view"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "propertyType": "group",
+            "type": "tab",
+            "id": "topToolbarGroup",
+            "title": "Toolbars",
+            "propertyMembers": [
+                {
+                    "propertyType": "group",
+                    "type": "dropdown",
+                    "id": "DocAdvancedSetting",
+                    "title": "Toolbar for:",
+                    "propertyMembers": [
+                        {
+                            "propertyType": "property",
+                            "type": "toolbar",
+                            "id": "documentViewToolbar",
+                            "context": [
+                                "Folder", "Document", "CurrentFolder"
+                            ],
+                            "required": false,
+                            "visibility": true,
+                            "title": "Documents view",
+                            "defaultValue": {
+                                "actionList": [
+                                    {
+                                        "isMenu": true,
+                                        "propertiesValue": {
+                                            "align": "left",
+                                            "label": "AddMenu",
+                                            "items": [
+                                                {
+                                                    "actionDefinitionId": "icm.action.folder.AddFolder",
+                                                    "propertiesValue": {
+                                                        "label": "AddFolder"
+                                                    }
+                                                },
+                                                {
+                                                    "actionDefinitionId": "icm.action.document.AddDocumentFromLocal",
+                                                    "propertiesValue": {
+                                                        "label": "AddFromLocal",
+                                                        "allowContentAsLink": true,
+                                                        "allowNoContent": true
+                                                    }
+                                                },
+                                                {
+                                                    "actionDefinitionId": "icm.action.document.AddDocumentFromRepository",
+                                                    "propertiesValue": {
+                                                        "label": "AddFromRepository"
+                                                    }
+                                                },
+                                                {
+                                                    "isSeparator": true
+                                                },
+                                                {
+                                                	"actionDefinitionId":"icm.action.contentitem.PasteToOpenFolder",
+                                                	"propertiesValue": {
+                                                		"label":"Paste"
+                                                	}
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "actionDefinitionId": "icm.action.contentitem.Open",
+                                        "propertiesValue": {
+                                            "align": "left",
+                                            "label": "Open"
+                                        }
+                                    },
+                                    {
+                                        "isMenu": true,
+                                        "propertiesValue": {
+                                            "align": "left",
+                                            "label": "Actions",
+                                            "associatedMenus":[],
+											"items":[
+												{
+													"actionDefinitionId":"RefreshGrid",
+													"propertiesValue": {
+														"label":"Refresh"
+													}
+												}
+											]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "propertyType": "property",
+                            "type": "toolbar",
+                            "id": "taskToolbar",
+                            "context": ["Case","Task"],
+                            "title": "Tasks view",
+                            "defaultValue": {
+                                "actionList": [
+                                    {
+                                        "actionDefinitionId": "icm.action.case.OpenAddPredefinedTaskPage",
+                                        "propertiesValue": {
+                                            "align": "left",
+                                            "label": "AddTask"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "propertyType": "property",
+                            "type": "toolbar",
+                            "id": "historyToolbar",
+                            "context": [ "Case" ],
+                            "title": "History view"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "events": [
+        {
+            "id": "icm.SendCaseInfo",
+            "title": "Send case information",
+            "functionName": "handleICM_SendCaseInfoEvent",
+            "direction": "subscribed",
+            "description": "Display the case that is specified in the event payload."
+        },
+        {
+            "id": "icm.SelectDocument",
+            "title": "Document selected",
+            "type": "wiring",
+            "direction": "published",
+            "description": "The user selected a document."
+        },
+        {
+            "id": "icm.OpenDocument",
+            "title": "Document opened",
+            "type": "broadcast",
+            "direction": "published",
+            "description": "The user opened a document."
+        },
+        {
+            "id": "icm.OpenFolder",
+            "title": "Folder opened",
+            "type": "wiring",
+            "direction": "published",
+            "description": "The user opened a folder."
+        },
+        {
+            "id": "icm.SelectFolder",
+            "title": "Folder selected",
+            "type": "wiring",
+            "direction": "published",
+            "description": "The user selected a folder."
+        },
+        {
+            "id": "icm.SelectCase",
+            "title": "Select case",
+            "functionName": "handleICM_SelectCaseEvent",
+            "direction": "subscribed",
+            "description": "Display the case information for the case that is contained in the event payload."
+        },
+        {
+            "id": "icm.ClearContent",
+            "title": "Clear content",
+            "functionName": "handleICM_ClearContentEvent",
+            "direction": "subscribed",
+            "description": "Clear the content in the Case Information widget."
+        },
+        {
+            "id": "icm.SelectTab",
+            "title": "Select tab",
+            "functionName": "handleICM_SelectTabEvent",
+            "direction": "subscribed",
+            "description": "Open the tab that is specified in the event payload."
+        },
+		{
+            "id": "icm.RefreshTab",
+            "title": "Refresh",
+            "functionName": "handleICM_RefreshTabEvent",
+            "direction": "subscribed",
+            "description": "Refresh the tab that is specified in the event payload."
+        },
+        {
+            "id": "icm.FilterHistory",
+            "title": "Filter history",
+            "functionName": "handleICM_FilterHistoryEvent",
+            "direction": "subscribed",
+            "description": "Filter the entries in the History tab based on the criteria that is specified in the event payload."
+        },
+        {
+            "id": "icm.SelectInitialFolder",
+            "title": "Select folder",
+            "functionName": "handleICM_SelectInitialFolderEvent",
+            "direction": "subscribed",
+            "description": "Open the case subfolder that is specified in the event payload."
+        },
+        {
+            "id": "icm.TaskSelect",
+            "title": "Task selected",
+            "type": "wiring",
+            "direction": "published",
+            "description": "The user selected a task from the Task view."
+        },
+        {
+            "id": "icm.SendWorkItem",
+            "title": "Receive work item",
+            "functionName": "handleICM_SendWorkItemEvent",
+            "direction": "subscribed",
+            "description": "Display the information for the work item that is specified in the event payload"
+        },
+		{
+            "id": "icm.SendCaseHistory",
+            "title": "Send case history",
+            "type": "wiring",
+            "direction": "published",
+            "description": "The user selected a history item from the History view."
+        },
+		{
+            "id": "icm.TaskStatusUpdated",
+            "title": "Task status updated",
+            "type": "wiring",
+            "direction": "published",
+            "description": "The task status is updated."
+        }
+    ]
+}

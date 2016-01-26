@@ -1,0 +1,49 @@
+{
+	"id":"CommentWidget",
+	"title":"A sample comment Page Widget",
+	"category":"CustomWidgets",
+	"description":"This widget show comments added for a case",
+	"definition":"CommentWidget.json",
+    "preview": "images/comment_preview.png",
+    "icon": "images/comment_icon.png",
+	"runtimeClassName":"icm.custom.pgwidget.commentWidget.CommentWidget",
+	"help": "",
+	"previewThumbnail":"images/comment_thumb.gif",
+	"properties":[
+		{
+            "propertyType":"property",
+            "type":"string",
+            "id":"PreferredHeight",
+            "defaultValue":"100%",
+            "disabled": true,
+            "required":false,
+            "visibility":false,
+            "title":"Preferred Height"
+        },
+        {
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "commentsAreReadOnly",
+            "defaultValue": false,
+            "required": true,
+            "visibility": true,
+            "title": "Comments are read only"
+        }
+	],
+    "events":[
+        {
+            "id": "icm.SelectCase",
+            "title": "Select case",
+            "functionName": "handleICM_SelectCaseEvent",
+            "direction": "subscribed",
+            "description": "Display the case information for the case that is contained in the event payload."
+        },
+        {
+            "id": "icm.SendCaseInfo",
+            "title": "Send case information",
+            "functionName": "handleICM_SendCaseInfoEvent",
+            "direction": "subscribed",
+            "description": "Display the case that is specified in the event payload."
+        }
+    ]
+}
